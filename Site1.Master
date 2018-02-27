@@ -1,0 +1,121 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="BlogHub.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>BlogHub</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+        <!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+        <!-- /Scripts -->
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <!-- Header -->
+			<header id="header">
+				<nav class="left">
+					<a href="#menu"><span>Menu</span></a>
+				</nav>
+				<a href="index.aspx" class="logo">bloghub</a>
+				<nav class="right">
+                            <%
+                if (Session["username"] == null)
+                {
+                            %>
+					            <a href="login.aspx" class="button alt">Log in</a>
+                                
+                            <%
+
+                }
+                else
+                {
+                            %>
+                                <a href="userhome.aspx" class="button alt">Profile</a>
+                                <a href="logout.aspx" class="button alt" onclick="logout">Log out</a>
+                                
+                            <%
+                }
+                            %>
+				</nav>
+			</header>
+    <!-- /Header -->
+
+
+
+    <!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.aspx">Home</a></li>
+					
+                    <li>
+                                 <%
+                if (Session["username"] == null)
+                {
+                            %>
+					            <a href="login.aspx" class="button alt">Log in</a>
+                            <%
+
+                }
+                else
+                {
+                            %>
+                                <a href="userhome.aspx" class="button alt">Profile</a>
+                                <a href="logout.aspx" class="button alt" onclick="logout">Log out</a>
+                                
+                            <%
+                }
+                            %>
+
+                    </li>
+					<li><a href="signup.aspx">Sign Up</a></li>
+				</ul>
+				<ul class="actions vertical">
+					<li><a href="login.aspx" class="button fit">Login</a></li>
+				</ul>
+			</nav>
+    <!-- /Menu -->
+
+
+
+    <!--Content-->
+    
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <!--/Content-->
+
+
+
+    <!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<h2>Get In Touch</h2>
+					<ul class="actions">
+						<li><span class="icon fa-phone"></span> <a href="#">+91-0000000000</a></li>
+						<li><span class="icon fa-envelope"></span> <a href="#">helpdesk@bloghub.com</a></li>
+						<li><span class="icon fa-map-marker"></span>  Ahmedabad , India .</li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; BLOGHUB.
+				</div>
+			</footer>
+    <!--/ Footer -->
+
+    
+</body>
+</html>
